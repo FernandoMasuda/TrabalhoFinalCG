@@ -29,11 +29,33 @@
 
 - Carregue pelo menos um modelo externo
 
-   - Utilizado GLTFLoader para a criação de modelo de um macaco em 3D
+   - Utilizado GLTFLoader para a criação de modelo de um macaco em 3D fazendo um import para utilizá-lo: 
+   
+      import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
     
       Exemplo:
     
      const assetLoader = new GLTFLoader();
+     
+      assetLoader.load(monkeyUrl.href, function(gltf) {
+      
+      const model = gltf.scene;
+      
+      console.log(model.children[1].material.opacity)
+      
+      scene.add(model);
+      
+      model.position.set(-12, 4, 10);
+
+      mixer = new THREE.AnimationMixer( model );
+      
+      const clips = gltf.animations;
+
+      const clip = THREE.AnimationClip.findByName( clips, 'myAnimation' );
+      
+      const action = mixer.clipAction( clip );
+
+      }
 
 - Realize a criação de objetos dinâmicos
   
@@ -50,17 +72,21 @@
     Exemplos: 
 
    - GUI
-    
+      
+      Mudar a cor da esfera com o mouse:
+      
       gui.addColor(options, 'sphereColor').onChange(function(e){
-     sphere.material.color.set(e); - Mudar a cor da esfera com o mouse
-
+     sphere.material.color.set(e);
+      
+      Selecionar a opção com o mouse para mudar a estrutura da esfera em "grades":
+      
       gui.add(options, 'wireframe').onChange(function(e){
       sphere.material.wireframe = e;
-      }); - Selecionar a opção com o mouse para mudar a estrutura da esfera em "grades"
+      });
 
 
    - OrbitControls: Movimentação da câmera
     
-    # Exemplo
+    # Print
     
-    ![image](https://user-images.githubusercontent.com/37126620/189177685-95867909-332c-4000-b175-6e5750e94aa0.png)
+   ![image](https://user-images.githubusercontent.com/37126620/189206747-a6f0d6c8-1dbb-4c74-9f23-7a23df68f79a.png)
