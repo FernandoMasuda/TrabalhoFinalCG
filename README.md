@@ -17,8 +17,9 @@
    - const sphereMaterial = new THREE.MeshStandardMaterial
 
 - Carregue pelo menos 1 textura
+    - textureLoader()
     
-   - Texturas utilizando as imagens "nebula.jpg", "stars.jpg"
+       Texturas utilizando as imagens "nebula.jpg", "stars.jpg"
     
 - Possua pelo menos 2 fontes de iluminação
   
