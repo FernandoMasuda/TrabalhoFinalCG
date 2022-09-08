@@ -6,7 +6,7 @@
   
   - planeGeometry
   
-  - phereGeometry
+  - sphereGeometry
 
 - Utilize pelo menos 2 tipos de materiais
 
